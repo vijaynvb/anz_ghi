@@ -1,4 +1,4 @@
-name: simple workflow
+name: 1-simple workflow
 on: push
 jobs:
   my-first-job:
