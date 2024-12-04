@@ -1,0 +1,36 @@
+# {
+#   "id": 1,
+#   "name". "vijay",
+#   "isActive": true,
+#   "address":
+#     {
+#       "doorno":1
+#       "stteet": "asda",
+#       "zip": 123123
+#     }
+#   "phone": [
+#     { "type": "work",
+#       "number": 123123
+#     },
+#     { "type": "personal",
+#       "number": 324234
+#     }
+#   ]
+# }
+
+id: 1
+name: "vijay"
+isActive: true
+address:
+  doorno: 1
+  stteet: hjh
+  zip: 123123
+phone: 
+  - type: "work"
+    number: 123123
+  - type: "personal"
+    number: 2342 
+describeme: |
+      here i can write 
+      multiple lines
+      everyting is of decribeme property
