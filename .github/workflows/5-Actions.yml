@@ -10,7 +10,7 @@ jobs:
         with:
             distribution: 'adopt'
             java-version: '11'
-      - run: mvn build 
+      - run: mvn install 
       - run: ls 
 
       # git clone java
