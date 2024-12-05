@@ -1,0 +1,55 @@
+name: 12-Caching
+
+on:
+  workflow_dispatch
+
+jobs:
+  install-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+          #cache: 'maven'
+
+      - name: Install Dependencies
+        run: mvn dependency:go-offline
+
+  test:
+    runs-on: ubuntu-latest
+    needs: install-dependencies
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+          #cache: 'maven'
+
+      - name: Test with Maven
+        run: mvn -B test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: install-dependencies
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+          #cache: 'maven'
+
+      - name: Build with Maven
+        run: mvn clean install -Dmaven.test.skip=true

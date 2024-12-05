@@ -13,6 +13,8 @@ jobs:
         id: build
         run: echo "result=success" >> "$GITHUB_OUTPUT"
 
+        # getting token for splunk login 
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -21,3 +23,5 @@ jobs:
         env:
           BUILD_STATUS: ${{ needs.build.outputs.result }}
         run: echo "Build Status:" $BUILD_STATUS
+
+        # other jobs can use the token to write logs 
