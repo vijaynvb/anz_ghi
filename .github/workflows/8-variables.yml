@@ -32,3 +32,6 @@ jobs:
            echo "Step env var: ${{ env.UNDEFINED_VAR_WITH_DEFAULT }}"
            echo "Step Secret var: ${{ secrets.My_Repo_Secret }}"
            
+# varialbe with in workflow, job, step env.variablename
+# variable for repo, vars.variablename
+# secret for repo, secrets.varaiblename
