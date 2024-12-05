@@ -1,0 +1,12 @@
+name: 7-expresions
+on: [workflow_dispatch, push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - if: ${{ github.event_name }} == "push"
+        name: Conditional Step Using an Expression
+        run: echo "This is a push to the master branch."
+      - if: ${{ github.event_name }} == "workflow_dispatch"
+        name: Conditional Step Using an Expression
+        run: echo "This is a workflow dispatch to the master branch."

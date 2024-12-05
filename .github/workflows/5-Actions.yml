@@ -17,3 +17,7 @@ jobs:
       # dependencies are prepared jdk version mvn 
       # build your project mvn build
       # expect distribution traget *.jar 
+
+      # push jar to relase in github it self
+      # push jar to artifact in github it self 
+      # push jar to JFROG in other infra
