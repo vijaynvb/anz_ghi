@@ -30,3 +30,5 @@ jobs:
            echo "Step env var: ${{ env.OVERWRITTEN }}"
            echo "Step env var: ${{ env.WORKFLOW_VAR }}" # I am a workflow env var
            echo "Step env var: ${{ env.UNDEFINED_VAR_WITH_DEFAULT }}"
+           echo "Step Secret var: ${{ secrets.My_Repo_Secret }}"
+           
