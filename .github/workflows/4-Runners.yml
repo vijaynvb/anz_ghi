@@ -1,0 +1,18 @@
+name: 4-Runners
+on: workflow_dispatch
+jobs:
+  my-first-job:
+    name: my first job
+    runs-on: ubuntu-latest # github container registry, by default it runs on github standard runner
+    steps:
+      - run: echo "hello world"
+  my-Second-job:
+    name: my second job
+    runs-on: windows-latest
+    steps:
+      - run: echo "hello world"
+  my-Third-job:
+    name: my third job
+    runs-on: mac-latest
+    steps:
+      - run: echo "hello world"
