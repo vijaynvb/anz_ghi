@@ -11,8 +11,7 @@ jobs:
             distribution: 'adopt'
             java-version: '11'
       - run: mvn install 
-      - run: cd target
-      - run: ls 
+      - run: ls ./target
 
       # git clone java
       # dependencies are prepared jdk version mvn 
