@@ -1,0 +1,19 @@
+name: 5-Actions
+on: workflow_dispatch
+jobs:
+  my-first-job:
+    name: Build Job
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@4
+        with:
+            distribution: 'adopt'
+            java-version: '11'
+      - run: mvn build 
+      - run: ls 
+
+      # git clone java
+      # dependencies are prepared jdk version mvn 
+      # build your project mvn build
+      # expect distribution traget *.jar 
