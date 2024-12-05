@@ -1,0 +1,64 @@
+name: 14-Release
+
+on:
+  workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+          cache: 'maven'
+
+      - name: Build with Maven
+        run: mvn clean install -Dmaven.test.skip=true
+  
+      - run: mkdir staging && cp target/*.jar staging
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Package
+          path: staging
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Download web-app content
+      uses: actions/download-artifact@v4
+      with:
+        name: Package
+           
+    - name: View content
+      run: ls -R
+
+    - name: Archive site content
+      uses: thedoctor0/zip-release@master
+      with:
+        filename: app.zip
+        
+    - name: Create GitHub release
+      id: create-new-release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.run_number }}
+        release_name: Release ${{ github.run_number }}
+        
+    - name: Upload release asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+        asset_path: ./app.zip
+        asset_name: app-v${{ github.ref_type }}.zip
+        asset_content_type: application/zip
