@@ -7,6 +7,10 @@ on:
         type: boolean
         description: Whether unit tests will pass or not
         default: true
+      my-name: 
+        type: string
+        description: enter your name
+        default: vijay
 
 jobs:
   lint-build:
@@ -59,3 +63,5 @@ jobs:
     steps:
       - name: Deploying to prod
         run: echo "Deploying to prod..."
+
+
