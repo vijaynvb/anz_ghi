@@ -1,9 +1,9 @@
 name: 3-WorkflowEvents
 #on: push
 #on: [push, workflow_dispatch]
-on:
-  schedule:
-    - cron: '*/5 * * * *' # run every 5 mins
+on: workflow_dispatch
+#  schedule:
+#    - cron: '*/5 * * * *' # run every 5 mins
 jobs:
   my-first-job:
     name: my first job
