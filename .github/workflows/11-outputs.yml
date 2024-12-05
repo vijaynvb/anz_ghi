@@ -1,0 +1,23 @@
+name: 11-Outputs
+
+on:
+  workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.build.outputs.result }}
+    steps:
+      - name: Build
+        id: build
+        run: echo "result=success" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deployment
+        env:
+          BUILD_STATUS: ${{ needs.build.outputs.result }}
+        run: echo "Build Status:” $BUILD_STATUS

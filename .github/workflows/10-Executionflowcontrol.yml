@@ -2,7 +2,7 @@ name: 10-Controlling the Execution Flow
 
 on:
   workflow_dispatch:
-    inputs:
+    inputs:   # UI, Workflow can pass the inputs while calling this workfolw 
       pass-unit-tests:
         type: boolean
         description: Whether unit tests will pass or not
