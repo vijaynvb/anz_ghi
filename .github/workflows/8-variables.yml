@@ -16,14 +16,17 @@ jobs:
         env:
           STEP_VAR: 'I am a step env var'
           step_var2: 'I am another step env var'
+          WORKFLOW_VAR: 'I am a step env var'
         run: |
           echo "Step env var: ${{ env.STEP_VAR }}"
           echo "Step env var 2: $step_var2"
           echo "Job env var: ${{ env.JOB_VAR }}"
-          echo "Workflow env var: ${{ env.WORKFLOW_VAR }}"
+          echo "Workflow env var: ${{ env.WORKFLOW_VAR }}" # I am a step env var
           echo "Overwritten: ${{ env.OVERWRITTEN }}"
       - name: Overwrite job variable
         env:
           OVERWRITTEN: 'I have been overwritten at the step level'
         run: |
            echo "Step env var: ${{ env.OVERWRITTEN }}"
+           echo "Step env var: ${{ env.WORKFLOW_VAR }}" # I am a workflow env var
+           echo "Step env var: ${{ env.UNDEFINED_VAR_WITH_DEFAULT }}"
