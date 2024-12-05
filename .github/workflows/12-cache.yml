@@ -15,7 +15,7 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
-          #cache: 'maven'
+          cache: 'maven'
 
       - name: Install Dependencies
         run: mvn dependency:go-offline
@@ -32,7 +32,7 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
-          #cache: 'maven'
+          cache: 'maven'
 
       - name: Test with Maven
         run: mvn -B test
@@ -49,7 +49,7 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
-          #cache: 'maven'
+          cache: 'maven'
 
       - name: Build with Maven
         run: mvn clean install -Dmaven.test.skip=true
