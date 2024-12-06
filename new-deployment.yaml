@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: todo-app-deployment
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: todo-app
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: todo-app-container
-          image: <docker-hub-name>/todoapp
+          image: vijaynvb/anztodoapp:1.0
           ports:
             - containerPort: 8081
 ---

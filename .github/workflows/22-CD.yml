@@ -1,0 +1,14 @@
+name: 22-CD
+on: workflow_dispatch
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Deploy to Kubernetes
+        run: kubectl apply -f new-deployment.yaml
+  
+      - name: Display all deployment and services
+        run: kubectl get all -o wide
