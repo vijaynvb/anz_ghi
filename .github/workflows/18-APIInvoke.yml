@@ -1,0 +1,20 @@
+# test the availabilty of the server -> Spring boot application -> actuator service -> ipaddress:port/health 
+
+name: 18-Fetch-Data-API
+on:
+  workflow_dispatch: 
+
+jobs:
+  fetch-todo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Todo Data
+        run: |
+          # Use curl to fetch the data from the API endpoint
+          # Integrate external systems within the Actions workflow
+          # prepare API request with the required inputs like token payload etc
+          todo_data=$(curl -s https://jsonplaceholder.typicode.com/todos/1)
+          # Print the fetched data
+          echo "Fetched Todo Data: $todo_data"
+
+          # curl -> commandline url client -> request service 
