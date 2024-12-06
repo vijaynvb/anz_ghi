@@ -1,0 +1,24 @@
+name: 15-Matrices
+
+on:
+  workflow_dispatch
+
+jobs:
+  backwards-compatibility:
+    name: ${{ matrix.os }}-${{ matrix.java-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        java-version: [11,14,17]
+        os:
+          - ubuntu-latest
+          - windows-latest
+
+    steps:
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: ${{ matrix.java-version }}
+      - name: Perform some tests
+        run: echo "Running tests on OS ${{ matrix.os }} and Java ${{ matrix.java-version }}"
