@@ -11,6 +11,10 @@ inputs:
     description: The working directory of the application
     default: .
     required: false
+  cache:
+    description: Cache key for caching 
+    default: maven
+    required: false
 
 runs:
   using: 'composite'
@@ -21,7 +25,7 @@ runs:
       with:
         distribution: 'adopt'
         java-version: ${{ inputs.java-version }}
-        cache: 'maven'  # Cache Maven dependencies
+        cache: ${{ inputs.cache }}  # Cache Maven dependencies
 
     # Step 2: Install Dependencies
     - name: Install Dependencies

@@ -21,6 +21,7 @@ jobs:
         with: 
             java-version: 11
             working-dir: .
+            cache: 'vijay'
 
       # Step 3: Run tests
       - name: Run tests
