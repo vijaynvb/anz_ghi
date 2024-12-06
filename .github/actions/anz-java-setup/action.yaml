@@ -1,0 +1,32 @@
+#Custom action with multiple steps composite
+
+name: ANZ Setup Java
+description: This action allows caching both Java and Maven Dependencies based on the pom.xml file
+inputs: 
+  java-version:
+    description: 'Java version to use'
+    default: '11'
+    required: true
+  working-dir:
+    description: The working directory of the application
+    default: .
+    required: false
+
+runs:
+  using: 'composite'
+  steps: 
+    # Step 1: Setup Java version
+    - name: Setup Java version ${{ inputs.java-version }}
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'adopt'
+        java-version: ${{ inputs.java-version }}
+        cache: 'maven'  # Cache Maven dependencies
+
+    # Step 2: Install Dependencies
+    - name: Install Dependencies
+      run: mvn dependency:go-offline
+      shell: bash
+      working-directory: ${{ inputs.working-dir }}  # Set working directory for Maven command
+
+
