@@ -3,6 +3,6 @@ on: workflow_dispatch
 jobs:
   my-first-job:
     name: my first job
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - run: echo "hello world"
