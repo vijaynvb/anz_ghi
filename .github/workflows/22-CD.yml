@@ -12,3 +12,5 @@ jobs:
   
       - name: Display all deployment and services
         run: kubectl get all -o wide
+
+# view [angular, react, react native, maui], service [rest api], devops, db [rdms, nosql]
