@@ -1,0 +1,19 @@
+name: 16-Environments
+
+on:
+  workflow_dispatch:
+    inputs:
+      target-env:
+        type: environment  # list all the enviroments in repo
+        default: dev
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.target-env }}
+    env:
+      my-env-value: ${{ vars.MYSQL_DB || 'tododefault' }}
+    steps:
+      - name: Echo vars
+        run: |
+          echo "Env variable: ${{ env.my-env-value }}"
