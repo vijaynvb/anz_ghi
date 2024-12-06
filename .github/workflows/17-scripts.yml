@@ -1,0 +1,17 @@
+name: 17-Shell-Script
+
+on:
+  workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Make script executable and run
+        shell: bash
+        run: |
+          chmod +x ./init.sh
+          ./init.sh
